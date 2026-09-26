@@ -79,10 +79,8 @@ body.show-all ol.pubs > li:not(.first),
 body.show-all .preprints { display: block; }
 .preprints hr { border: 0; border-top: 1px solid #ddd; margin: 24px 0 8px; }
 
-/* top tabs */
+/* top nav */
 nav.tabs { margin-top: 14px; padding-top: 10px; border-top: 1px solid #ddd; }
 nav.tabs a { margin-right: 18px; }
-nav.tabs a.on { color: #222; font-weight: bold; }
-nav.tabs a.on:hover { text-decoration: none; }
-header { margin-bottom: 8px; }
-section[data-tab] > h2:first-child { margin-top: 28px; }
+html { scroll-behavior: smooth; }
+section { scroll-margin-top: 16px; }
