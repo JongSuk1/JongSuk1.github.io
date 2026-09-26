@@ -68,3 +68,12 @@ footer { margin-top: 56px; font-size: 14px; }
   dt { float: none; width: auto; margin-top: 4px; }
   dd { margin-left: 0; }
 }
+
+/* selected / all publications */
+.pubtoggle a { color: #1a4d8f; }
+.pubtoggle a.on { color: #222; font-weight: bold; text-decoration: none; }
+ol.pubs > li:not(.first) { display: none; }
+.preprints { display: none; }
+body.show-all ol.pubs > li:not(.first),
+body.show-all .preprints { display: block; }
+.preprints hr { border: 0; border-top: 1px solid #ddd; margin: 24px 0 8px; }
