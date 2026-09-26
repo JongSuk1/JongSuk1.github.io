@@ -1,0 +1,70 @@
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 16px;
+  line-height: 1.55;
+  color: #222;
+  background: #fff;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 48px 20px 64px;
+}
+
+a { color: #1a4d8f; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+header { margin-bottom: 36px; }
+header h1 {
+  font-size: 30px;
+  font-weight: normal;
+  margin: 0 0 6px;
+}
+header .links { margin: 0; }
+
+h2 {
+  font-size: 20px;
+  font-weight: normal;
+  margin: 40px 0 12px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #ddd;
+}
+h3 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 24px 0 8px;
+}
+
+p { margin: 0 0 12px; }
+.muted { color: #666; }
+.note { font-size: 14px; margin-bottom: 8px; }
+.email { margin-top: 4px; }
+
+/* date / content rows */
+dl { margin: 0; }
+dt {
+  float: left;
+  width: 150px;
+  color: #666;
+  font-size: 14px;
+  padding-top: 2px;
+}
+dd {
+  margin: 0 0 12px 160px;
+}
+dd::after { content: ""; display: block; clear: both; }
+
+/* publications */
+.pubs { padding-left: 0; margin: 0; list-style: none; }
+.pubs li { margin-bottom: 16px; }
+.pubs .title { font-weight: bold; }
+.pubs .venue { font-style: italic; }
+.pubs a { margin-left: 2px; }
+
+section ul { margin: 0 0 12px; padding-left: 20px; }
+
+footer { margin-top: 56px; font-size: 14px; }
+
+@media (max-width: 560px) {
+  body { padding: 32px 16px 48px; }
+  dt { float: none; width: auto; margin-top: 4px; }
+  dd { margin-left: 0; }
+}
