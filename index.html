@@ -18,21 +18,22 @@
 </head>
 <body>
 
-<header>
+<div class="page">
+<header class="side">
   <h1>Jongsuk Kim</h1>
-  <p class="links">
-    <a href="https://scholar.google.com/citations?user=C1O5NFQAAAAJ&amp;hl=en">Google Scholar</a> ·
-    <a href="https://github.com/JongSuk1">GitHub</a> ·
-    <a href="https://www.linkedin.com/in/jongsuk-kim-6258071a5">LinkedIn</a> ·
-    <a href="https://drive.google.com/file/d/1WqPNyLuDEZmxX_fIvbUJYgAPROm4Fp1y/view?usp=sharing">CV</a>
-  </p>
-  <nav class="tabs">
+  <nav class="menu">
     <a href="#about">About</a>
     <a href="#publications">Publications</a>
     <a href="#experience">Experience</a>
     <a href="#awards">Honors &amp; Talks</a>
     <a href="#service">Service</a>
   </nav>
+  <p class="links">
+    <a href="https://scholar.google.com/citations?user=C1O5NFQAAAAJ&amp;hl=en">Google Scholar</a>
+    <a href="https://github.com/JongSuk1">GitHub</a>
+    <a href="https://www.linkedin.com/in/jongsuk-kim-6258071a5">LinkedIn</a>
+    <a href="https://drive.google.com/file/d/1WqPNyLuDEZmxX_fIvbUJYgAPROm4Fp1y/view?usp=sharing">CV</a>
+  </p>
 </header>
 
 <main>
@@ -225,11 +226,12 @@
   </ul>
 </section>
 
-</main>
-
 <footer>
   <p class="muted">Last updated September 2026.</p>
 </footer>
+
+</main>
+</div>
 
 <script>
   (function () {
@@ -242,6 +244,26 @@
     }
     sel.onclick = function (e) { e.preventDefault(); set(false); };
     all.onclick = function (e) { e.preventDefault(); set(true); };
+
+    // highlight the section currently in view
+    var links = document.querySelectorAll('nav.menu a');
+    var targets = [];
+    for (var i = 0; i < links.length; i++) {
+      var el = document.querySelector(links[i].getAttribute('href'));
+      if (el) targets.push({ link: links[i], el: el });
+    }
+    function spy() {
+      var y = window.scrollY + 120, cur = targets[0];
+      for (var i = 0; i < targets.length; i++) {
+        if (targets[i].el.offsetTop <= y) cur = targets[i];
+      }
+      if (window.scrollY > 0 && window.innerHeight + window.scrollY >= document.body.offsetHeight - 2) cur = targets[targets.length - 1];
+      for (var j = 0; j < targets.length; j++) targets[j].link.classList.toggle('on', targets[j] === cur);
+    }
+    window.addEventListener('scroll', spy);
+    window.addEventListener('resize', spy);
+    window.addEventListener('hashchange', function () { setTimeout(spy, 0); });
+    spy();
   })();
 </script>
 

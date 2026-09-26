@@ -4,21 +4,49 @@ body {
   line-height: 1.55;
   color: #222;
   background: #fff;
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 48px 20px 64px;
+  margin: 0;
+  padding: 0 24px;
 }
 
 a { color: #1a4d8f; text-decoration: none; }
 a:hover { text-decoration: underline; }
 
-header { margin-bottom: 36px; }
-header h1 {
-  font-size: 30px;
-  font-weight: normal;
-  margin: 0 0 6px;
+/* layout: fixed left column, scrolling content */
+.page {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 700px);
+  column-gap: 48px;
+  max-width: 928px;
+  margin: 0 auto;
+  padding: 56px 0 64px;
 }
-header .links { margin: 0; }
+header.side {
+  position: sticky;
+  top: 56px;
+  align-self: start;
+}
+header.side h1 {
+  font-size: 26px;
+  font-weight: normal;
+  line-height: 1.2;
+  margin: 0 0 20px;
+}
+nav.menu a {
+  display: block;
+  padding: 2px 0;
+}
+nav.menu a.on { color: #222; font-weight: bold; }
+nav.menu a.on:hover { text-decoration: none; }
+header.side .links {
+  margin: 20px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid #ddd;
+  font-size: 14px;
+}
+header.side .links a { display: block; padding: 1px 0; }
+
+main { min-width: 0; }
+main > section:first-child { margin-top: 0; }
 
 h2 {
   font-size: 20px;
@@ -27,6 +55,7 @@ h2 {
   padding-bottom: 4px;
   border-bottom: 1px solid #ddd;
 }
+section:first-child h2 { margin-top: 0; }
 h3 {
   font-size: 16px;
   font-weight: bold;
@@ -43,14 +72,12 @@ p { margin: 0 0 12px; }
 dl { margin: 0; }
 dt {
   float: left;
-  width: 150px;
+  width: 140px;
   color: #666;
   font-size: 14px;
   padding-top: 2px;
 }
-dd {
-  margin: 0 0 12px 160px;
-}
+dd { margin: 0 0 12px 150px; }
 dd::after { content: ""; display: block; clear: both; }
 
 /* publications */
@@ -60,17 +87,6 @@ dd::after { content: ""; display: block; clear: both; }
 .pubs .venue { font-style: italic; }
 .pubs a { margin-left: 2px; }
 
-section ul { margin: 0 0 12px; padding-left: 20px; }
-
-footer { margin-top: 56px; font-size: 14px; }
-
-@media (max-width: 560px) {
-  body { padding: 32px 16px 48px; }
-  dt { float: none; width: auto; margin-top: 4px; }
-  dd { margin-left: 0; }
-}
-
-/* selected / all publications */
 .pubtoggle a { color: #1a4d8f; }
 .pubtoggle a.on { color: #222; font-weight: bold; text-decoration: none; }
 ol.pubs > li:not(.first) { display: none; }
@@ -79,8 +95,29 @@ body.show-all ol.pubs > li:not(.first),
 body.show-all .preprints { display: block; }
 .preprints hr { border: 0; border-top: 1px solid #ddd; margin: 24px 0 8px; }
 
-/* top nav */
-nav.tabs { margin-top: 14px; padding-top: 10px; border-top: 1px solid #ddd; }
-nav.tabs a { margin-right: 18px; }
-html { scroll-behavior: smooth; }
-section { scroll-margin-top: 16px; }
+section ul { margin: 0 0 12px; padding-left: 20px; }
+section { scroll-margin-top: 56px; }
+
+footer { margin-top: 56px; font-size: 14px; }
+
+/* narrow screens: column on top, menu in a row */
+@media (max-width: 760px) {
+  body { padding: 0 16px; }
+  .page {
+    display: block;
+    padding: 32px 0 48px;
+  }
+  header.side {
+    position: static;
+    margin-bottom: 28px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #ddd;
+  }
+  header.side h1 { margin-bottom: 10px; }
+  nav.menu a { display: inline; margin-right: 14px; padding: 0; }
+  header.side .links { border-top: 0; padding-top: 0; margin-top: 8px; }
+  header.side .links a { display: inline; margin-right: 10px; }
+  section { scroll-margin-top: 16px; }
+  dt { float: none; width: auto; margin-top: 4px; }
+  dd { margin-left: 0; }
+}
